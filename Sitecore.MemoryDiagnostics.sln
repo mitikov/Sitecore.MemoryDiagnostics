@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.MemoryDiagnostics", "Sitecore.MemoryDiagnostics.csproj", "{EF589DAF-9FCD-440F-A2A6-0595432B521A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.MemoryDiagnostics", "src\Sitecore.MemoryDiagnostics\Sitecore.MemoryDiagnostics.csproj", "{EF589DAF-9FCD-440F-A2A6-0595432B521A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
