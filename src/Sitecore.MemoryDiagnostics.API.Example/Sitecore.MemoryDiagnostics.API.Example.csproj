@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Sitecore.MemoryDiagnostics.API.Example</RootNamespace>
+    <AssemblyName>Sitecore.MemoryDiagnostics.API.Example</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Diagnostics.Runtime, Version=0.8.31.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Microsoft.Diagnostics.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SitecoreMemoryInspectionKit.Core, Version=1.0.3.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\SitecoreMemoryInspectionKit.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StatsProviders\Grouping\BaseGrouper.cs" />
+    <Compile Include="StatsProviders\Grouping\DocumentContextGrouper.cs" />
+    <Compile Include="StatsProviders\Grouping\DynamicAssemblyGeneration.cs" />
+    <Compile Include="StatsProviders\Grouping\ExtractCustomModules.cs" />
+    <Compile Include="StatsProviders\Grouping\JobOptionGroup.cs" />
+    <Compile Include="StatsProviders\Grouping\StringBuilderGrouping.cs" />
+    <Compile Include="StatsProviders\Hardcore\AllHttpWebRequest.cs" />
+    <Compile Include="StatsProviders\Hardcore\MvcRenderdingsWithoutCache.cs" />
+    <Compile Include="StatsProviders\Hardcore\ProcessedRequests.cs" />
+    <Compile Include="StatsProviders\Hardcore\ReadBufferContent.cs" />
+    <Compile Include="StatsProviders\Hardcore\RedisCommandsForHttpRequests.cs" />
+    <Compile Include="StatsProviders\Grouping\HttpRequestSample.cs" />
+    <Compile Include="StatsProviders\Grouping\RequestsGroupedByAnalyticsCookie.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatsProviders\Grouping\RouteCollectionSample.cs" />
+    <Compile Include="StatsProviders\RouteSample.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sitecore.MemoryDiagnostics\Sitecore.MemoryDiagnostics.csproj">
+      <Project>{ef589daf-9fcd-440f-a2a6-0595432b521a}</Project>
+      <Name>Sitecore.MemoryDiagnostics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
