@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF589DAF-9FCD-440F-A2A6-0595432B521A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore.MemoryDiagnostics</RootNamespace>
+    <AssemblyName>Sitecore.MemoryDiagnostics</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>\bin\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>\bin\MD.July.XML</DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Runtime, Version=0.8.31.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\Microsoft.Diagnostics.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MongoDB.Bson.2.7.2\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MongoDB.Driver.2.7.2\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MongoDB.Driver.Core.2.7.2\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SC.Sitecore.Kernel.8.2.6\lib\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SitecoreMemoryInspectionKit.Core">
+      <HintPath>References\SitecoreMemoryInspectionKit.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\CarriesMemoryDumpAnalysisLogicAttribute.cs" />
+    <Compile Include="Attributes\CanBeNullObjectAttribute.cs" />
+    <Compile Include="Attributes\InjectFieldValueAttribute.cs" />
+    <Compile Include="Attributes\ModelMappingAttribute.cs" />
+    <Compile Include="Attributes\ClrObjAndTypeNotEmpty.cs" />
+    <Compile Include="Attributes\NotThreadSafe.cs" />
+    <Compile Include="Attributes\NotUsedAttribute.cs" />
+    <Compile Include="Attributes\ThreadSafeClass.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\DeadHeapObjectEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\EmptyObjectClrRuntimeEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\ThreadStackObjects.cs" />
+    <Compile Include="ClrObjectEnumerators\Samples\ConfigurationProvider.cs" />
+    <Compile Include="ClrObjectEnumerators\Samples\SitecoreCacheEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\StaticFieldValuesEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\LiveObjects\LiveObjectEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\HeapBasedObjectEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\IEnumerateObjectsFromSource.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\ManagedTheadPoolWorkersThreadEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\Base\MThreadStackEnumerator.cs" />
+    <Compile Include="ClrObjectEnumerators\LiveObjects\IGetAliveObjects.cs" />
+    <Compile Include="ClrObjectsProviders\Base\MultipleConditionFilteredObjectsProvider.cs" />
+    <Compile Include="ClrObjectsProviders\PrefetchItemsInCacheEnumerator.cs" />
+    <Compile Include="ClrObjectsProviders\StringBasedEnumerators\ConditionalStringEnumerator.cs" />
+    <Compile Include="ClrObjectsProviders\StringBasedEnumerators\StringObjectEnumerator.cs" />
+    <Compile Include="ClrObjectsProviders\FilteredObjectByTypesProvider.cs" />
+    <Compile Include="ClrObjectsProviders\FilteredObjectProviderByTypeName.cs" />
+    <Compile Include="ClrObjectsProviders\Base\FilteredObjectsProviderBase.cs" />
+    <Compile Include="ClrObjectsProviders\Base\IFilteredObjectsProvider.cs" />
+    <Compile Include="ClrObjectsProviders\NullFilterClrObjectProvider.cs" />
+    <Compile Include="ClrObjectsToTextFormatters\ClrObjectToTextFormatter.cs" />
+    <Compile Include="ClrObjectsToTextFormatters\ClrObjectToTextFormatterBase.cs" />
+    <Compile Include="CollectionReaders\ArrayListReader.cs" />
+    <Compile Include="CollectionReaders\ConcurrentDictionaryReader.cs" />
+    <Compile Include="CollectionReaders\Concurrent\ConcurrentDictionaryReader.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\ConcurrentSetReader.cs" />
+    <Compile Include="CollectionReaders\DictionaryEntryReader.cs" />
+    <Compile Include="CollectionReaders\GenericDictionaryReader.cs" />
+    <Compile Include="CollectionReaders\HttpCookieCollectionReader.cs" />
+    <Compile Include="CollectionReaders\GenericStackReader.cs" />
+    <Compile Include="CollectionReaders\Newtonsoft\JPropertyKeyedCollectionReader.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\MVCRenderingPropertiesReader.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\ScSetReader.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\VersionCollectionReader.cs" />
+    <Compile Include="ConnectionDetails\IMemoryDumpConnectionPath.cs" />
+    <Compile Include="ConnectionDetails\MDFileConnection.cs" />
+    <Compile Include="Disablers\RecursionCheckerDisabler.cs" />
+    <Compile Include="Disablers\ThreadStaticDisablerBase.cs" />
+    <Compile Include="Exceptions\AttributeMissingException.cs" />
+    <Compile Include="Exceptions\ClrTypeNotFound.cs" />
+    <Compile Include="Exceptions\FieldMissingInStaticType.cs" />
+    <Compile Include="Extensions\ClrObjectExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\IEnumerateClrObjectsFromClrRuntimeExtensions.cs" />
+    <Compile Include="Extensions\IFilteredObjectsProviderExtensions.cs" />
+    <Compile Include="Extensions\IModelMapperFactoryExtensions.cs" />
+    <Compile Include="Extensions\ModelMapperFactoryExtensions.cs" />
+    <Compile Include="Facades\ObjectEnumeration\AllHeapObjects.cs" />
+    <Compile Include="Facades\ObjectEnumeration\DefaultObjectEnumerationFacade.cs" />
+    <Compile Include="Facades\ObjectEnumeration\EmptyEnumeratorFacade.cs" />
+    <Compile Include="Facades\ObjectEnumeration\HeapBasedFacadeObjectEnumerator.cs" />
+    <Compile Include="Facades\ObjectEnumeration\IObjectEnumerationFacade.cs" />
+    <Compile Include="Helpers\HashSetHelper.cs" />
+    <Compile Include="Helpers\StringArrayOptimizationsAwareEnumerator.cs" />
+    <Compile Include="ClrObjectsProviders\ModelFilters\SkipsObjectsOfKnownType.cs" />
+    <Compile Include="ClrObjectsProviders\ModelFilters\BlacklistObjectFilter.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpSessionStateContainer.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpWebRequestMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\uriModel.cs" />
+    <Compile Include="Models\FallBack\IO\StreamWriter.cs" />
+    <Compile Include="Models\FallBack\JScripts\DocumentContextModel.cs" />
+    <Compile Include="Models\FallBack\JScripts\VsaEngineModel.cs" />
+    <Compile Include="Models\FallBack\Log4net\QuietTextWriterModel.cs" />
+    <Compile Include="Models\FallBack\Log4net\SitecoreLogFileAppenderModel.cs" />
+    <Compile Include="Models\FallBack\Newtonsoft\JObjectMappingModel.cs" />
+    <Compile Include="Models\FallBack\Newtonsoft\JPropertyListMappingModel.cs" />
+    <Compile Include="Models\FallBack\Newtonsoft\JPropertyMappingModel.cs" />
+    <Compile Include="Models\FallBack\Newtonsoft\JValueMappingModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\AssemblyBuilderDataModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\DynamicMethodRTD.cs" />
+    <Compile Include="Models\FallBack\Reflection\MethodBuilderModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\RuntimeParameterInfoModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\SignatureHelperModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\TypeBuilderModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\DefaultCacheManagerMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\xConnect\InteractionDataRecordMappingModel.cs" />
+    <Compile Include="Models\FallBack\ThreadContextMappingModel.cs" />
+    <Compile Include="ThreadFilters\NoThreadFiltering.cs" />
+    <Compile Include="ThreadFilters\ThreadsWithHttpRequests.cs" />
+    <Compile Include="ThreadFilters\UserThreadsFilter.cs" />
+    <Compile Include="Interfaces\IFilter.cs" />
+    <Compile Include="Interfaces\INameProvider.cs" />
+    <Compile Include="Interfaces\IProvideCacheLayer.cs" />
+    <Compile Include="ModelEqualityComparers\CookieModelComparer.cs" />
+    <Compile Include="ModelEqualityComparers\CultureInfoModelComparers.cs" />
+    <Compile Include="ModelEqualityComparers\IDModelEqualityComparer.cs" />
+    <Compile Include="ModelEqualityComparers\LanguageModelEqualityComparer.cs" />
+    <Compile Include="ModelEqualityComparers\IIS7WorkerRequestURLEqComparer.cs" />
+    <Compile Include="ModelEqualityComparers\RegexEqComparer.cs" />
+    <Compile Include="ModelEqualityComparers\SqlParamModelComparer.cs" />
+    <Compile Include="ModelEqualityComparers\VersionUriModelComparer.cs" />
+    <Compile Include="ModelFactory\Abstracts\EmptyModelMapperFactory.cs" />
+    <Compile Include="Extensions\RuntimeExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\IDsNameHelper.cs" />
+    <Compile Include="Helpers\JSonFormatterHelper.cs" />
+    <Compile Include="ModelFactory\Abstracts\PropertyModelMapperFactory.cs" />
+    <Compile Include="ModelFactory\UnknownModelMapperFactory.cs" />
+    <Compile Include="ClrObjectsProviders\ModelFilters\EmptyModelMappingFilter.cs" />
+    <Compile Include="ClrObjectsProviders\ModelFilters\IModelMappingFilter.cs" />
+    <Compile Include="ModelMapperManager.cs" />
+    <Compile Include="ModelMetadataInterfaces\ICaptionHolder.cs" />
+    <Compile Include="ModelMetadataInterfaces\IDateTimeHolder.cs" />
+    <Compile Include="MetadataProviders\Base\IRuntimeMetadataProvider.cs" />
+    <Compile Include="MetadataProviders\MetadataManager.cs" />
+    <Compile Include="MetadataProviders\RuntimeTimeProvider.cs" />
+    <Compile Include="ModelComparers\AddressComparer.cs" />
+    <Compile Include="ModelFactory\Abstracts\CacheBasedModelMapperFactory.cs" />
+    <Compile Include="ModelFactory\Abstracts\IModelMapperFactory.cs" />
+    <Compile Include="ModelFactory\SingleTypeModelMapperFactory.cs" />
+    <Compile Include="Disablers\ModelMapperFactoryCacheDisabler.cs" />
+    <Compile Include="CollectionReaders\ArrayReader.cs" />
+    <Compile Include="CollectionReaders\EventHandlerReader.cs" />
+    <Compile Include="Extensions\InjectableFieldCache.cs" />
+    <Compile Include="ModelFactory\Abstracts\BaseModelMapperFactory.cs" />
+    <Compile Include="ModelFactory\Assisting\CollectionEnumeratorProvider.cs" />
+    <Compile Include="ModelFactory\LazyLoadModelMapperFactory.cs" />
+    <Compile Include="Models\CustomModels\SitecoreCacheLazy.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\AreaControllerRunnerModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\DirectoryMonitorMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HostingEnvironmentMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpContextMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpCookieModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpRequestMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\HttpResponseMappingModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\SessionStateStoreDataModel.cs" />
+    <Compile Include="Models\FallBack\Lucene\TopDocsModel.cs" />
+    <Compile Include="Models\FallBack\Mongo\MongoConnectionPoolMappingModel.cs" />
+    <Compile Include="Models\FallBack\Mongo\MongoServerAddressModelMapping.cs" />
+    <Compile Include="Models\FallBack\MVC\HttpWebRoute.cs" />
+    <Compile Include="Models\FallBack\MVC\RouteCollectionMappingModel.cs" />
+    <Compile Include="Models\FallBack\MVC\RouteMappingModel.cs" />
+    <Compile Include="Models\FallBack\MVC\LiteralSubsegmentMappingModel.cs" />
+    <Compile Include="Models\FallBack\MVC\MVCRenderRenderingArgsMapping.cs" />
+    <Compile Include="Models\FallBack\MVC\RouteValueDictionaryMappingModel.cs" />
+    <Compile Include="Models\FallBack\MVC\SitecoreMVCRenderingPropertiesModel.cs" />
+    <Compile Include="Models\FallBack\OracleRelated\OpoConCtxModel.cs" />
+    <Compile Include="Models\FallBack\OracleRelated\OracleConnectionModel.cs" />
+    <Compile Include="Models\FallBack\OracleRelated\OracleDataReaderModel.cs" />
+    <Compile Include="Models\FallBack\RuntimeAssemblyMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\AccessResultCacheKeyModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\AccessRightModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\AccessResultCacheRecordModelMapping.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\AccessResultModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\InternedPrefetchDataModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\CorePipelineModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\CoreProcessorMapping.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\CultureInfoMapping.cs" />
+    <Compile Include="Models\FallBack\EventHandlerModel.cs" />
+    <Compile Include="Models\FallBack\Int32Model.cs" />
+    <Compile Include="Models\FallBack\RegexMappingModel.cs" />
+    <Compile Include="Models\FallBack\Reflection\RuntimeMethodInfoModel.cs" />
+    <Compile Include="Models\FallBack\RuntimeTypeCacheModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\DataEngine\GetItemCommandModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\DataEngine\ResolvePathCommandModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\EventQueueTimeStampModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\GetTranslationArgsModel.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\JobDictionaryReader.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Install\CommandSortingKeyModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Install\SortingKeyModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Jobs\JobMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Jobs\JobOptionsModelMapping.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Jobs\JobStatus.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\NullRetryerModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\PlaceHolderMapping.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\QueuedEventModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Security\RolesCollectionModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\SqlEventQueueModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Users\SitecoreIdentity.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Users\UserMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Users\UserRuntimeSettingsModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\VersionModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\VersionUriModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\WebSublayoutMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlCommandMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlConnectionFactoryModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\DbConnectionPoolGroupMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\DbConnectionPoolIdentityMapping.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\DbConnectionPoolModelMapping.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlConnectionMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlConnectionPoolKeyModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlConnectionStringMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlDataReaderMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlInternalConnectionTdsMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlParameterMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\SqlReferenceCollectionMappingModel.cs" />
+    <Compile Include="Models\FallBack\SqlRelated\DbReferenceCollectionEntry.cs" />
+    <Compile Include="Models\FallBack\StringBuilderMappingModel.cs" />
+    <Compile Include="Models\FallBack\ThreadMappingModel.cs" />
+    <Compile Include="Models\FallBack\XmlDocumentModel.cs" />
+    <Compile Include="Models\IChildrenIterator.cs" />
+    <Compile Include="Models\InternalProcessing\DictionaryEntry.cs" />
+    <Compile Include="Models\FallBack\ObjectModel.cs" />
+    <Compile Include="Models\InternalProcessing\GeneralObjectMapping.cs" />
+    <Compile Include="Models\InternalProcessing\TypeModel.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\DateTimeReader.cs" />
+    <Compile Include="CollectionReaders\CollectionReaderBase.cs" />
+    <Compile Include="CollectionReaders\GenericListReader.cs" />
+    <Compile Include="CollectionReaders\HashListReader.cs" />
+    <Compile Include="CollectionReaders\HashtableReader.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\IDListReader.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\GuidReader.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\IDReader.cs" />
+    <Compile Include="CollectionReaders\SitecoreSpecific\SafeDictionaryReader.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\StringReader.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\TimeSpanReader.cs" />
+    <Compile Include="CollectionReaders\WeakReferenceReader.cs" />
+    <Compile Include="Exceptions\RecursionException.cs" />
+    <Compile Include="Helpers\EnumerationHelper.cs" />
+    <Compile Include="Helpers\RecursionHelper.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="PrimitiveEntitiesReaders\IPrimitiveEntityReader.cs" />
+    <Compile Include="ThreadStackEnumerators\ThreadStackEnumerator.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="ModelFactory\Assisting\PrimitiveKnownEntitiesReader.cs" />
+    <Compile Include="Models\LazyLoad.cs" />
+    <Compile Include="ModelFactory\ModelMapperFactory.cs" />
+    <Compile Include="ModelFactory\Assisting\PriorityFallbackMatchTypeProvider.cs" />
+    <Compile Include="ModelFactory\Assisting\ViolationFormatter.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\AlarmClockModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\CacheEntryModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\CacheManagerModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\FieldListMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\FieldListReader.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\ItemDataModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\ItemDefinitionModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\PrefetchDataModel.cs" />
+    <Compile Include="Models\FallBack\StringModel.cs" />
+    <Compile Include="Models\InternalProcessing\ArrayMappingModel.cs" />
+    <Compile Include="Models\BaseMappingModel\ClrObjectMappingModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\DataProviderModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\IDModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\ItemModel.cs" />
+    <Compile Include="Models\FallBack\AspNetRelated\IIS7WorkerRequestModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\LanguageModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\DataProviderCollectionModel.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\Caching\SitecoreCacheModel.cs" />
+    <Compile Include="Models\InternalProcessing\ClrObjNoType.cs" />
+    <Compile Include="Models\FallBack\SitecoreRelated\DatabaseMappingModel.cs" />
+    <Compile Include="Models\BaseMappingModel\IClrObjMappingModel.cs" />
+    <Compile Include="Models\InternalProcessing\EmptyClrObjectModel.cs" />
+    <Compile Include="Models\InternalProcessing\ErrorDuringProcessing.cs" />
+    <Compile Include="Models\InternalProcessing\HashtableMappingModel.cs" />
+    <Compile Include="Models\InternalProcessing\IDListMappingModel.cs" />
+    <Compile Include="Models\InternalProcessing\NoConverterForType.cs" />
+    <Compile Include="Models\InternalProcessing\RecursionDetectedModel.cs" />
+    <Compile Include="RuntimeProviders\FilebasedRuntimeProvider.cs" />
+    <Compile Include="SitecoreSpecific\PrefetchCacheModel.cs" />
+    <Compile Include="SourceFactories\IClrRuntimeFactory.cs" />
+    <Compile Include="SourceFactories\MDClrRuntimeFactory.cs" />
+    <Compile Include="StatisticsCollector\HeapByType\HeapTypeStatisticsCollection.cs" />
+    <Compile Include="StatisticsCollector\HeapByType\HeapTypeStatisticsEntry.cs" />
+    <Compile Include="StatisticsCollector\HeapByType\LiveDeadObjectByTypes.cs" />
+    <Compile Include="StatisticsCollector\ObjectSizeMetrics.cs" />
+    <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="Utils\CultureInfoUtils.cs" />
+    <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextConstants.cs" />
+    <Compile Include="Utils\VersionUtils.cs" />
+    <Compile Include="WellknownTypeNames.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ModelFilters\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
