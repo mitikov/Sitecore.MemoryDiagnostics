@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.MemoryDiagnostics", "src\Sitecore.MemoryDiagnostics\Sitecore.MemoryDiagnostics.csproj", "{EF589DAF-9FCD-440F-A2A6-0595432B521A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.MemoryDiagnostics.API.Example", "src\Sitecore.MemoryDiagnostics.API.Example\Sitecore.MemoryDiagnostics.API.Example.csproj", "{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EF589DAF-9FCD-440F-A2A6-0595432B521A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF589DAF-9FCD-440F-A2A6-0595432B521A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF589DAF-9FCD-440F-A2A6-0595432B521A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8B1B1C-09CE-4D6B-9B27-E9EFACCB3C28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
